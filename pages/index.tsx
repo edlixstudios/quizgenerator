@@ -1,11 +1,15 @@
 import type { NextPage } from 'next'
-import Landing from '../components/shared/landing'
+import Download from '../components/download'
+import Feature from '../components/feature'
+import Landing from '../components/landing'
 
 
 const Home: NextPage = () => {
   return (
-    <div className="scroll-smooth" >
+    <div id='home' >
       <Landing />
+      <Feature />
+      <Download />
     </div>
   )
 }

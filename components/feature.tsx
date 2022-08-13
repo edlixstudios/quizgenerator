@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import {FaMagic, FaPuzzlePiece , FaFlagUsa} from "react-icons/fa";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
@@ -14,7 +14,7 @@ import Yes from "../assets/images/yes.png";
 
 export default function Feature(){
     return(
-        <div id="feature" className="w-full p-4 grid container drop-shadow-xl mx-auto grid-cols-1 gap-4 xl:gap-8 " >
+        <div id="feature" className="w-full p-4 grid container mx-auto grid-cols-1 gap-4 xl:gap-8 " >
             <div className="xl:grid xl:grid-cols-3 gap-8" >
                 <FeatureCard 
                 icon={<FaMagic className="w-full h-full" />} 
@@ -49,7 +49,9 @@ interface IFeatureCard{
 
 function FeatureCard({icon, title,text}:IFeatureCard){
     return(
-        <div className=" flex flex-col min-h-[310px] xl:gap-6 xl:max-h-[400px] " >
+        <motion.div 
+            whileHover={{y:-5}}
+            className=" flex flex-col min-h-[310px] xl:gap-6 xl:max-h-[400px] xl:hover:shadow-2xl " >
             <div className="flex p-2 items-center w-full justify-between xl:h-24" >
                 <div className="bg-rose-300 w-12 h-12 rounded-full flex justify-center items-center" >
                     <div className="bg-rose-400 w-5/6 h-5/6 rounded-full p-2 text-rose-50" >
@@ -61,7 +63,7 @@ function FeatureCard({icon, title,text}:IFeatureCard){
             <div className="leading-loose text-xl p-2" >
                 {text}
             </div>
-        </div>
+        </motion.div>
     )
 }
 
@@ -88,13 +90,10 @@ interface IImagePreview{
     alt: string;
 }
 
-// TODO: Modal Image Preview
-
 function ImagePreview({src,alt}:IImagePreview){
     return(
         <motion.div
-        
-        className=" transition-all hover:scale-110"
+            className=" transition-all drop-shadow-xl  rounded xl:hover:z-50 xl:hover:scale-150"
         >
             <Image src={src} alt={alt} />
         </motion.div>
